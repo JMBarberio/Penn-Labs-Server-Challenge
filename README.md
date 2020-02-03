@@ -3,6 +3,8 @@
 ## Documentation
 ***More specific workings of functions are available in DocString format. Do help(<desired>) to get more information***
 
+**With more time, I need to go back and add edge case protection for certain methods that deal with user input and data that could have bad entries.***
+
 ## Installation
 1. Click the green "use this template" button to make your own copy of this repository, and clone it. 
 2. Change directory into the cloned repository.
@@ -35,11 +37,8 @@
       - `False` is not favorited, `True` is favorited
     - Each call to a club goes through the `user_list` and counts the number of `true`s
     - Updated club representation in `/api/clubs`
-16. Created the start of the analytics page, which has GET and POST methods. This is the personal feature I am implementing using `matplitlib` and `numpy`. I have the most programming experience in data science, so I see it as the best way to show some of my skillset.
-17. 
-
-TODO
-  - Need to add catches for edge cases in user add, remove, and searching stuff
+16. Created the start of the analytics page, which has GET and POST methods. This is the personal feature I am implementing using `matplotlib` and `numpy`. I have the most programming experience in data science, so I see it as the best way to show some of my skillset.
+17. Using a form `analytics_form.html` the user chooses what information they want to see. I  implemented "Club Tags" and "Clubs Per User." Clicking on either button will show a `matplotlib` graph with the desired information.
   
 ## Submitting
 Follow the instructions at on the Technical Challenge page for submission.
@@ -47,5 +46,11 @@ Follow the instructions at on the Technical Challenge page for submission.
 ## Installing Additional Packages
 Use any tools you think are relevant to the challenge! To install additional packages 
 run `pipenv install <package_name>` within the directory. Make sure to document your additions.
-- Installed requests 
-- Installed JSON
+- Packages from pipfile:
+  - flask
+  - beautifulsoup4
+  - requests
+  - json
+  - matplotlib
+  - numpy
+  - io
