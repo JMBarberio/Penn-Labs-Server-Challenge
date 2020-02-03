@@ -1,7 +1,7 @@
 # Penn Labs Server Challenge
 
 ## Documentation
-Fill out this section as you complete the challenge!
+***More specific workings of functions are available in DocString format. Do help(<desired>) to get more information***
 
 ## Installation
 1. Click the green "use this template" button to make your own copy of this repository, and clone it. 
@@ -9,10 +9,9 @@ Fill out this section as you complete the challenge!
 3. Install `pipenv`
    * `brew install pipenv` if you're on a Mac with [`homebrew`](https://brew.sh/) installed.
    * `pip install --user --upgrade pipenv` for most other machines.
-4. Install packages using `pipenv install`.
+4. Install packages using `pipenv install --skip-lock`.
 
 ## Developing
-***More specific workings of functions are available in DocString format. Do help(<desired>) to get more information***
 1. Had to run `pipenv shell` to activate environment. 
 2. Use `pipenv run index.py` to run the project.
 3. Follow the instructions [here](https://www.notion.so/pennlabs/Server-Challenge-Spring-20-5a14bc18fb2f44ba90a61ba86b6fc426).
