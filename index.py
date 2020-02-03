@@ -167,8 +167,11 @@ def analytics():
     
     Returns:
     --------
+    render_template('analytics_form.html')
+        The form that allows the user to choose which data to see
     
-    
+    Response
+        either graph is of type response (in populating server-side)
     """
     if request.method == 'POST':
         if 'club_tags' in request.form:
