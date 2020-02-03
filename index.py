@@ -4,6 +4,10 @@ from club import Club
 from club_encoder import ClubEncoder
 from user import User
 from json import *
+from analytics import *
+
+import matplotlib
+matplotlib.use('agg') # stops conflict between matplotlib creating new windows and flask
 
 app = Flask(__name__)        
 
@@ -31,7 +35,13 @@ encoded_clubs_list = encode_clubs()
 
 user_list = []
 jen = User('Jen', [unencoded_clubs_list[3], unencoded_clubs_list[9]])
+bob = User('Bob', [unencoded_clubs_list[10], unencoded_clubs_list[2]])
+joe = User('Joe', [])
+sam = User('Sam', [unencoded_clubs_list[10], unencoded_clubs_list[2], unencoded_clubs_list[3], unencoded_clubs_list[9]])
 user_list.append(jen)
+user_list.append(bob)
+user_list.append(joe)
+user_list.append(sam)
 
 @app.route('/')
 def main():
@@ -146,6 +156,30 @@ def favorite():
         return "There was an error."
                                  
     return render_template('favorite_form.html')
+
+@app.route('/api/analytics', methods = ['GET', 'POST'])
+def analytics():
+    """"
+    This page provides desired graphs and analytics regarding information about clubs and users
+    using matplotlib and numpy.
+    
+    Functions are defined in analytics.py
+    
+    Returns:
+    --------
+    
+    
+    """
+    if request.method == 'POST':
+        if 'club_tags' in request.form:
+            return club_tags(unencoded_clubs_list)
+                     
+        elif 'clubs_per_user' in request.form:
+            return clubs_per_user(user_list)
+                
+    return render_template('analytics_form.html')
+    
+
     
 if __name__ == '__main__':
     app.run()

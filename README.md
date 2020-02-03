@@ -36,6 +36,8 @@ Fill out this section as you complete the challenge!
       - `False` is not favorited, `True` is favorited
     - Each call to a club goes through the `user_list` and counts the number of `true`s
     - Updated club representation in `/api/clubs`
+16. Created the start of the analytics page, which has GET and POST methods. This is the personal feature I am implementing using `matplitlib` and `numpy`. I have the most programming experience in data science, so I see it as the best way to show some of my skillset.
+17. 
 
 TODO
   - Need to add catches for edge cases in user add, remove, and searching stuff

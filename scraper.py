@@ -80,7 +80,7 @@ def get_club_name(club):
     We've implemented this method for you to demonstrate how to use the functions provided.
     """
     elts = get_elements_with_class(club, 'strong', 'club-name')
-    return check_len(elts)
+    return check_len(elts, 0)
 
 def get_club_description(club):
     """
@@ -88,7 +88,7 @@ def get_club_description(club):
     """
     
     elts = get_elements_with_class(club, 'em', '')
-    return check_len(elts)
+    return check_len(elts, 0)
 
 def get_club_tags(club):
     """
@@ -96,9 +96,12 @@ def get_club_tags(club):
     """
     
     elts = get_elements_with_class(club, 'span', 'tag is-info is-rounded')
-    return check_len(elts)
+    tags_list = []
+    for tags in range(0, len(elts)):
+        tags_list.append(check_len(elts, tags))
+    return tags_list
 
-def check_len(elts):
+def check_len(elts, index):
     """
     Length checker to avoid code redundancy
     
@@ -106,6 +109,9 @@ def check_len(elts):
     ----------
     elts : list
         The list of soups
+    
+    index : int
+        The index value of elts
     
     Returns:
     --------
@@ -115,4 +121,4 @@ def check_len(elts):
     
     if len(elts) < 1:
         return ''
-    return elts[0].text
+    return elts[index].text
