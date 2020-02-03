@@ -13,6 +13,19 @@ The file that houses the analytics functions
 """
 
 def club_tags(unencoded_clubs_list):
+    """
+    Creates a bar graph showing of the number of occurrances of each possible club tag.
+    
+    By using a dictionary to count club tag occurrances, the function then creates a 
+    matplotlib bar graph using numpy representations of the dictionary information.
+    The graph is formatted and pushed as a Response type for view on the server.
+    
+    Returns:
+    --------
+    Response
+        The graph
+    """
+    
     club_dict = {}
     for clubs in unencoded_clubs_list:
         for tag in clubs.get_category():
@@ -50,6 +63,18 @@ def club_tags(unencoded_clubs_list):
 
 
 def clubs_per_user(user_list):
+    """
+    Creates a bar graph of the number of clubs per user. 
+    
+    Using a dictionary to gather each user's name and the number of club each 
+    user is in, numpy representations of the data is used to create a matplotlib
+    bar graph. The graph is then formatted and pushed for view on the server.
+    
+    Returns:
+    --------
+    Response
+        The graph
+    """
     user_club_dict = {}
     for user in user_list:
         name = user.get_user_name()
