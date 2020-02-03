@@ -48,6 +48,3 @@ Use any tools you think are relevant to the challenge! To install additional pac
 run `pipenv install <package_name>` within the directory. Make sure to document your additions.
 - Installed requests 
 - Installed JSON
-
-## Possible Questions
-1. Does `get_clubs` in `scraper.py` give all of the clubs or just one?
