@@ -1,18 +1,35 @@
 from bs4 import BeautifulSoup
-
+import requests
 
 def get_html(url):
     """
-    Retrieve the HTML from the website at `url`.
-    """
-    return None  # TODO: Implement this function
+    Retrieve the HTML from the website at `url`
+    
+    Attributes:
+    -----------
+    url : str
+        The url of the desired page
+        
+    Returns:
+    --------
+    Response
+        The html of the page
+    """    
+    
+    return requests.get(url)
 
 def get_clubs_html():
     """
     Get the HTML of online clubs with Penn.
+    
+    Returns:
+    --------
+    Response
+        The html of the page with the clubs at Penn
     """
+    
     url = 'https://ocwp.apps.pennlabs.org'
-    return get_html(url)
+    return get_html(url).text
 
 def soupify(html):
     """
@@ -42,8 +59,19 @@ def get_clubs(soup):
     """
     This function should return a list of soups which each correspond to the html
     for a single club.
+    
+    Arguments:
+    ----------
+    soup : BeautifulSoup
+        The html for the url
+    
+    Returns:
+    --------
+    list
+        A list of soups for each club
     """
-    return [] # TODO: Implement this function
+    
+    return get_elements_with_class(soup, 'div', 'box')
 
 def get_club_name(club):
     """
@@ -52,19 +80,39 @@ def get_club_name(club):
     We've implemented this method for you to demonstrate how to use the functions provided.
     """
     elts = get_elements_with_class(club, 'strong', 'club-name')
-    if len(elts) < 1:
-        return ''
-    return elts[0].text
+    return check_len(elts)
 
 def get_club_description(club):
     """
     Extract club description from a soup of 
     """
-    return '' # TODO: Implement this function
+    
+    elts = get_elements_with_class(club, 'em', '')
+    return check_len(elts)
 
 def get_club_tags(club):
     """
     Get the tag labels for all tags associated with a single club.
     """
-    return [] # TODO: Implement this function
+    
+    elts = get_elements_with_class(club, 'span', 'tag is-info is-rounded')
+    return check_len(elts)
 
+def check_len(elts):
+    """
+    Length checker to avoid code redundancy
+    
+    Arguments:
+    ----------
+    elts : list
+        The list of soups
+    
+    Returns:
+    --------
+    str 
+        Either the text associated with the soup, or an empty string.
+    """
+    
+    if len(elts) < 1:
+        return ''
+    return elts[0].text

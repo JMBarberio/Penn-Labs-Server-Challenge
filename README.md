@@ -12,13 +12,42 @@ Fill out this section as you complete the challenge!
 4. Install packages using `pipenv install`.
 
 ## Developing
-1. Use `pipenv run index.py` to run the project.
-2. Follow the instructions [here](https://www.notion.so/pennlabs/Server-Challenge-Spring-20-5a14bc18fb2f44ba90a61ba86b6fc426).
-3. Document your work in this `README.md` file.
+***More specific workings of functions are available in DocString format. Do help(<desired>) to get more information***
+1. Had to run `pipenv shell` to activate environment. 
+2. Use `pipenv run index.py` to run the project.
+3. Follow the instructions [here](https://www.notion.so/pennlabs/Server-Challenge-Spring-20-5a14bc18fb2f44ba90a61ba86b6fc426).
+4. Document your work in this `README.md` file.
+5. Looked into BeautifulSoup -> pulls information from HTML and XML files
+6. Created Club class, as I believe storing the club objects in memory is the best option. Having all of the clubs locally allows for faster iteration through the clubs. I see them as the most "primitive" type of data here, as every other data structure uses or groups clubs.
+7. Began implementing functions in scraper.py
+  - Needed to import requests
+  - Created helper function `check_len` to avoid repeating if statements. See `help(check_len)`.
+8. Tested Club object creation and worked as desired.
+9. Created User class, and as I chose to keep the clubs in-memory, I believe it is best to keep any users in-memory as well. The user is contains a list of clubs, where I see every entry just pointing to an already in-memory club. My implementation uses iteration and lists heavily. Traversing the list and iterating would take longer if the data needed to be read from a JSON file and updated after.
+10. I created the master list of clubs `unencoded_clubs_list` in `index.py` and defined a function `encode_clubs()`. This function encodes all of the clubs, which allows me to update the data in view after the unencoded version with direct access to the attributes of each club has been changed.
+11. I defined the class `ClubEncoder` which is a child of `JSONEncoder` and creates returns an encoded version of the club.
+12. Created an HTML template `new_club.html` which presents the user with a form with options to either see all of the clubs or add a new club and then see all of the clubs (including the new one).
+13. Created GET and POST methods of `/api/clubs`. The GET method first shows the `new_club.html` template and then either shows all of the clubs using `jsonify` or adds a new club and shows the clubs using `jsonify`.
+14. Created the GET method of `/api/username/<username>` and created another HTML template `user_profile.html`. The template presents the user with the information of the person entered in `<username>`. If that user does not exist, "No Such User" is shown instead.
+15. Created the GET and POST methods of `/api/favorite` and created another HTML template `favorite_form.html`. This template presents the user with a form that requires a valid user name, and the name of the club that the user wants to favorite. If an error occurs, "There was an error." is returned, and if not, the club's favorite count is increased by 1, the `/api/clubs` data is updated, and "Favorited!" is displayed.
+  - Favorite Logic
+    - New `int` attribute in Club class.
+    - Each user now gets a list of bools as long as their clubs list.
+      - `False` is not favorited, `True` is favorited
+    - Each call to a club goes through the `user_list` and counts the number of `true`s
+    - Updated club representation in `/api/clubs`
 
+TODO
+  - Need to add catches for edge cases in user add, remove, and searching stuff
+  
 ## Submitting
 Follow the instructions at on the Technical Challenge page for submission.
 
 ## Installing Additional Packages
 Use any tools you think are relevant to the challenge! To install additional packages 
 run `pipenv install <package_name>` within the directory. Make sure to document your additions.
+- Installed requests 
+- Installed JSON
+
+## Possible Questions
+1. Does `get_clubs` in `scraper.py` give all of the clubs or just one?
