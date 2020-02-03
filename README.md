@@ -3,7 +3,7 @@
 ## Documentation
 ***More specific workings of functions are available in DocString format. Do help(<desired>) to get more information***
 
-**With more time, I need to go back and add edge case protection for certain methods that deal with user input and data that could have bad entries.***
+*With more time, I need to go back and add edge case protection for certain methods that deal with user input and data that could have bad entries.*
 
 ## Installation
 1. Click the green "use this template" button to make your own copy of this repository, and clone it. 
